@@ -1,5 +1,9 @@
+import ErrorResponse from '../../../utils/errorResponse.js'
+
 export const getUser = ( req , res , next ) => {
-    res.status(200).json({ success: true , msg: `get a user ${req.params.id}`});
+    //res.status(200).json({ success: true , msg: `get a user ${req.params.id}`});
+    
+    next(new ErrorResponse('test' , 400));
 }
 
 export const createUser = ( req , res , next ) => {
