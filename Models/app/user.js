@@ -3,10 +3,27 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const UserSchema = new mongoose.Schema({
+    username:{
+        type: String,
+    },
     name:{
         type: String,
         required : [ true , 'Please add a name' ]
     },
+    lastname:{
+        type: String,
+        required : [ true , 'Please add a lastname' ]
+    },
+    birthday:{
+        type: Date,
+    },
+    birthplace:{
+        type: Date,
+    },   
+    address:{
+        type: String,
+        required : [ true , 'Please add an address' ]
+    }, 
     email: {
         type: String,
         required: [ true , 'Please add an email' ] ,
@@ -15,6 +32,16 @@ const UserSchema = new mongoose.Schema({
             /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
             'Please enter a valid email'
         ]
+    },
+    sex: {
+        type: String,
+        enum: ['male' , 'female' , 'other' ],
+        default: 'other'
+    },
+    step: {
+        type: Number,
+        enum: [1 , 2 , 3 ],
+        default: 1
     },
     role: {
         type: String,
